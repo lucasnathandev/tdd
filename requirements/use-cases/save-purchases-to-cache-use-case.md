@@ -12,6 +12,7 @@
 ## Exceção - erro ao apagar dados do cache
 
 <ol>
+<li>Sistema não grava os novos dados no Cache</li>
 <li>Sistema retorna erro</li>
 </ol>
 
