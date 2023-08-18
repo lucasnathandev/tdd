@@ -12,15 +12,13 @@ const makeSut = (timestamp: Date = new Date()): SutTypes => {
   return { sut, cacheStore };
 };
 
-let i = 1;
-
 describe("LocalLoadPurchases save: ", () => {
-  it(`${i++}. Should not delete or insert cache on sut.init`, async () => {
+  it("Should not delete or insert cache on sut.init", async () => {
     const { cacheStore } = makeSut();
     expect(cacheStore.actions).toEqual([]);
   });
 
-  it(`${i++}. Should not insert new cache if delete fails`, async () => {
+  it("Should not insert new cache if delete fails", async () => {
     const { sut, cacheStore } = makeSut();
     cacheStore.simulateDeleteError();
     const promise = sut.save(mockPurchases());
@@ -28,7 +26,7 @@ describe("LocalLoadPurchases save: ", () => {
     await expect(promise).rejects.toThrow();
   });
 
-  it(`${i++}. Should insert new cache if delete succeeds`, async () => {
+  it("Should insert new cache if delete succeeds", async () => {
     const timestamp = new Date();
     const { sut, cacheStore } = makeSut(timestamp);
     const purchases = mockPurchases();
@@ -46,7 +44,7 @@ describe("LocalLoadPurchases save: ", () => {
     await expect(promise).resolves.toBeFalsy();
   });
 
-  it(`${i++}. Should throw if insert throws`, async () => {
+  it("Should throw if insert throws", async () => {
     const { sut, cacheStore } = makeSut();
     cacheStore.simulateInsertError();
     const promise = sut.save(mockPurchases());
