@@ -14,11 +14,11 @@
 
 
 - [ ] 1. Sistema limpa o cache
-- [ ] 2. Sistema retorna erro
+- [ ] 2. Sistema retorna uma lista vazia
 
 
 
 ## Exceção - Cache vazio
 
 
-- [ ] 1. Sistema retorna erro
+- [ ] 1. Sistema retorna uma lista vazia

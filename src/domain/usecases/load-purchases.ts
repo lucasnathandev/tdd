@@ -1,6 +1,6 @@
 import { PurchaseModel } from "@/domain/models";
 export interface LoadPurchases {
-  loadAll: () => Promise<Array<LoadPurchases.Result>>;
+  loadAll: () => Promise<void>;
 }
 
 export namespace LoadPurchases {
