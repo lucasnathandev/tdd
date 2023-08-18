@@ -55,7 +55,6 @@ describe("LocalLoadPurchases (validation)", () => {
     const { sut, cacheStore } = makeSut(currentDate);
     cacheStore.fetchResult = {
       timestamp,
-      value: mockPurchases(),
     };
     const purchases = await sut.loadAll();
     expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch]);

@@ -24,8 +24,7 @@ export class LocalLoadPurchases implements SavePurchases, LoadPurchases {
         cache.timestamp,
         this.currentDate
       );
-      if (isValidCache) return cache.value;
-      return [];
+      return isValidCache ? cache.value : [];
     } catch (error) {
       return [];
     }

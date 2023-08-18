@@ -40,6 +40,7 @@ describe("LocalLoadPurchases load", () => {
       value: mockPurchases(),
     };
     const purchases = await sut.loadAll();
+
     expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch]);
     expect(cacheStore.fetchKey).toBe("purchases");
     expect(purchases).toEqual(cacheStore.fetchResult.value);
