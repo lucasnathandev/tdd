@@ -1,4 +1,8 @@
-import { CacheStoreSpy } from "@/data/tests";
+import {
+  CacheStoreSpy,
+  getCacheExpirationDate,
+  mockPurchases,
+} from "@/data/tests";
 import { LocalLoadPurchases } from "@/data/usecases";
 
 type SutTypes = {
@@ -15,8 +19,19 @@ const makeSut = (timestamp: Date = new Date()): SutTypes => {
 let i = 1;
 
 describe("LocalLoadPurchases (validation)", () => {
-  it("Should not delete or insert cache on sut.init", async () => {
+  it("Should not delete or insert cache on sut.init", () => {
     const { cacheStore } = makeSut();
     expect(cacheStore.actions).toEqual([]);
+  });
+
+  it("Should delete cache if load fails", () => {
+    const { sut, cacheStore } = makeSut();
+    cacheStore.simulateFetchError();
+    sut.validate();
+    expect(cacheStore.actions).toEqual([
+      CacheStoreSpy.Action.fetch,
+      CacheStoreSpy.Action.delete,
+    ]);
+    expect(cacheStore.deleteKey).toBe("purchases");
   });
 });
