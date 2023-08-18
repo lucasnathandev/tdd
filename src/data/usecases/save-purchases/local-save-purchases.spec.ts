@@ -29,12 +29,12 @@ describe("Local save purchases: ", () => {
     expect(cacheStore.deleteKey).toBe("purchases");
   });
 
-  it("Should not insert new cache if delete fails", () => {
+  it("Should not insert new cache if delete fails", async () => {
     const { sut, cacheStore } = makeSut();
     cacheStore.simulateDeleteError();
     const promise = sut.save(mockPurchases());
     expect(cacheStore.messages).toEqual([CacheStoreSpy.Message.delete]);
-    expect(promise).rejects.toThrow();
+    await expect(promise).rejects.toThrow();
   });
 
   it("Should insert new cache if delete succeeds", async () => {
@@ -49,7 +49,7 @@ describe("Local save purchases: ", () => {
     expect(cacheStore.insertValues).toEqual(purchases);
   });
 
-  it("Should throw if insert throws", () => {
+  it("Should throw if insert throws", async () => {
     const { sut, cacheStore } = makeSut();
     cacheStore.simulateInsertError();
     const promise = sut.save(mockPurchases());
@@ -57,6 +57,6 @@ describe("Local save purchases: ", () => {
       CacheStoreSpy.Message.delete,
       CacheStoreSpy.Message.insert,
     ]);
-    expect(promise).rejects.toThrow();
+    await expect(promise).rejects.toThrow();
   });
 });
