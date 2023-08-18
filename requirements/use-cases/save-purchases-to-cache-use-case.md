@@ -1,23 +1,18 @@
 # Gravar compras no Cache
 
 ## Caso de sucesso
-<ol>
-<li>Sistema executa o comando "Salvar compras"</li>
-<li>Sistema cria uma data para ser armazenada no Cache</li>
-<li>Sistema limpa os dados do Cache atual</li>
-<li>Sistema grava os novos dados no Cache</li>
-<li>Sistema não retorna nenhum erro</li>
-</ol>
+
+- [x] 1. Sistema executa o comando "Salvar compras 
+- [ ] 2. Sistema cria uma data para ser armazenada no Cache
+- [x] 3. Sistema apaga os dados do Cache atual
+- [x] 4. Sistema grava os novos dados no Cache
+- [ ] 5. Sistema não retorna nenhum erro
 
 ## Exceção - erro ao apagar dados do cache
 
-<ol>
-<li>Sistema não grava os novos dados no Cache</li>
-<li>Sistema retorna erro</li>
-</ol>
+- [x] 1. Sistema não grava os novos dados no Cache
+- [x] 2. Sistema retorna erro
 
 ## Exceção - erro ao gravar dados do cache
 
-<ol>
-<li>Sistema retorna erro</li>
-</ol>
+- [x] 1. Sistema retorna erro
