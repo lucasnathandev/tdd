@@ -34,4 +34,17 @@ describe("LocalLoadPurchases (validation)", () => {
     ]);
     expect(cacheStore.deleteKey).toBe("purchases");
   });
+
+  it("Should has no side effect if load succeeds", () => {
+    const currentDate = new Date();
+    const timestamp = getCacheExpirationDate(currentDate);
+    timestamp.setSeconds(timestamp.getSeconds() + 1);
+    const { sut, cacheStore } = makeSut(currentDate);
+    cacheStore.fetchResult = {
+      timestamp,
+    };
+    const purchases = sut.validate();
+    expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch]);
+    expect(cacheStore.fetchKey).toBe("purchases");
+  });
 });
