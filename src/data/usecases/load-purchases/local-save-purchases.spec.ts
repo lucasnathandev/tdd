@@ -1,15 +1,14 @@
-import { SavePurchases } from "@/domain/usecases";
-import { LocalSavePurchases } from "./local-save-purchases";
+import { LocalLoadPurchases } from "@/data/usecases";
 import { mockPurchases, CacheStoreSpy } from "@/data/tests";
 
 type SutTypes = {
-  sut: LocalSavePurchases;
+  sut: LocalLoadPurchases;
   cacheStore: CacheStoreSpy;
 };
 
 const makeSut = (timestamp: Date = new Date()): SutTypes => {
   const cacheStore = new CacheStoreSpy();
-  const sut = new LocalSavePurchases(cacheStore, timestamp);
+  const sut = new LocalLoadPurchases(cacheStore, timestamp);
   return { sut, cacheStore };
 };
 
